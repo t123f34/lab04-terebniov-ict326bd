@@ -1,0 +1,46 @@
+# Карта дефектів
+
+Номери рядків — у вихідному файлі src/app.js (коміт Add initial code with defects).
+
+| № | Рядок | Група | Опис дефекту | Прогноз | Виявлено | Виправлено |
+|---|-------|-------|--------------|---------|----------|------------|
+| 1 | 16–23 | Ф1 | змішані відступи: 1, 3, 8 пробілів і табуляція | Prettier, tabWidth, useTabs |  |  |
+| 2 | 55, 58, 164 | Ф2 | неоднакові пробіли навколо операторів і ком: price*(1 - …), (price,type), y+ 1 | Prettier, базове форматування |  |  |
+| 3 | 2, 5, 6 | Ф3 | лапки впереміш, є апостроф: "I'm here", 'Live music' | Prettier, singleQuote |  |  |
+| 4 | 3, 11 | Ф4 | частина інструкцій без ; | Prettier, semi |  |  |
+| 5 | 186 | Ф5 | виклик з 5 аргументами в одному рядку довжиною 134 символи | Prettier, printWidth |  |  |
+| 6 | 13, 165 | Ф6 | кілька інструкцій в одному рядку | Prettier, базове форматування |  |  |
+| 7 | 7–10, 11–12 | Ф7 | короткий об’єкт у кілька рядків і об’єкт із частковим перенесенням | Prettier, objectWrap |  |  |
+| 8 | 9, 23 | Ф8 | завершальна кома після останнього елемента є / немає | Prettier, trailingComma |  |  |
+| 9 | 13 | Ф9 | об’єкти {a: 1} і { b: 2 }: пробіли в дужках по-різному | Prettier, bracketSpacing |  |  |
+| 10 | 56–58 | Ф10 | стрілкові функції з одним параметром у дужках і без | Prettier, arrowParens |  |  |
+| 11 | 2 | Ф11 | ключ 'max-items' потребує лапок, інші ключі то з лапками, то без | Prettier, quoteProps |  |  |
+| 12 | 137–139 | Ф12 | довгий логічний вираз із 4 умов, довільно перенесений вручну | Prettier, printWidth, experimentalOperatorPosition |  |  |
+| 13 | 37–39, 67, 155, 31 | Ф13 | 3+ порожні рядки поспіль, пробіли в кінці рядків, } в одному рядку з кодом | Prettier, базове форматування |  |  |
+| 14 | 4 | К | змінна unusedTax оголошена, але не використана | ESLint, no-unused-vars |  |  |
+| 15 | 147 | К | функція oldCalc оголошена, але не викликається | ESLint, no-unused-vars |  |  |
+| 16 | 150 | К | звернення до неоголошеної змінної totl (функція не викликається) | ESLint, no-undef |  |  |
+| 17 | 95 | К | присвоєння в умові: if (status = "done") | ESLint, no-cond-assign |  |  |
+| 18 | 151 | К | код після return | ESLint, no-unreachable |  |  |
+| 19 | 3 | К | однакові ключі mode в об’єкті config | ESLint, no-dupe-keys |  |  |
+| 20 | 49 | К | однаковий case "student" у switch | ESLint, no-duplicate-case |  |  |
+| 21 | 80 | К | присвоєння параметра самому собі: buyerName = buyerName | ESLint, no-self-assign |  |  |
+| 22 | 83 | К | порожній блок if (seats.length === 0) {} | ESLint, no-empty |  |  |
+| 23 | 127 | К | порівняння з NaN: price === NaN | ESLint, use-isnan |  |  |
+| 24 | 132 | К | зайве перетворення на boolean: if (!!ev.active) | ESLint, no-extra-boolean-cast |  |  |
+| 25 | 27 | В | { eventId: eventId, … } у createTicket: не використано скорочений запис | ESLint, object-shorthand |  |  |
+| 26 | 91 | В | { id: id, buyer: …, tickets: tickets } у createOrder: не використано скорочений запис | ESLint, object-shorthand |  |  |
+| 27 | 158 | В | метод print: function () у reporter: не використано скорочений запис | ESLint, object-shorthand |  |  |
+| 28 | 31 | В | колбек find записано як function | ESLint, prefer-arrow-callback |  |  |
+| 29 | 35 | В | колбек filter записано як function | ESLint, prefer-arrow-callback |  |  |
+| 30 | 172 | В | колбек map записано як function | ESLint, prefer-arrow-callback |  |  |
+| 31 | 61 | В | currency = currency || "UAH" | ESLint, logical-assignment-operators |  |  |
+| 32 | 66 | В | unit = unit ?? "" | ESLint, logical-assignment-operators |  |  |
+| 33 | 176 | В | type = type || "vip" | ESLint, logical-assignment-operators |  |  |
+| 34 | 121 | В | for...in без перевірки власних властивостей (printStats) | ESLint, guard-for-in |  |  |
+| 35 | 198 | В | for...in без перевірки власних властивостей (основна частина) | ESLint, guard-for-in |  |  |
+| 36 | 103 | В | вкладеність блоків 4 рівні у validateOrder | ESLint, max-depth |  |  |
+| 37 | 84 | В | змінна total_price у snake_case | ESLint, camelcase |  |  |
+| 38 | 185 | В | змінна ticket_count у snake_case | ESLint, camelcase |  |  |
+| 39 | 46 | Л | знижка vip 0.2 замість 0.1 (замовлення 102: має бути 1620.00 UAH, а виводиться 1440.00 UAH) | жоден |  |  |
+| 40 | 73 | Л | умова seat <= event.capacity замість < (вільних місць має бути 117, а виводиться 118) | жоден |  |  |
