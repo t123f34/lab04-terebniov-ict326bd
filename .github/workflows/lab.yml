@@ -1,0 +1,28 @@
+name: run-lab
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  lab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run lab
+        run: node run-lab.mjs "$RUNNER_TEMP/proj" "${{ github.event.repository.name }}"
+      - name: Publish result and report data
+        if: always()
+        run: |
+          URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          if [ -d "$RUNNER_TEMP/proj/.git" ]; then
+            (cd "$RUNNER_TEMP/proj" && git push -f "$URL" main:lab-result)
+          fi
+          mkdir -p "$RUNNER_TEMP/data"
+          cp "$RUNNER_TEMP/lab04-report-data.txt" "$RUNNER_TEMP/data/" || true
+          cd "$RUNNER_TEMP/data"
+          git init -b report-data
+          git add .
+          git -c user.name=ci -c user.email=ci@example.com commit -m "report data"
+          git push -f "$URL" report-data
