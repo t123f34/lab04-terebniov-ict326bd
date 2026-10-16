@@ -1,0 +1,2799 @@
+Lab04 report data, generated 2026-10-16T06:43:07.748Z
+
+===== Версія Node.js =====
+$ node --version
+v22.23.3
+[exit code: 0]
+
+===== Версія npm =====
+$ npm --version
+10.9.9
+[exit code: 0]
+
+===== Версія Git =====
+$ git --version
+git version 2.55.0
+[exit code: 0]
+
+===== Версія Windows =====
+$ ver
+/bin/sh: 1: ver: not found
+[exit code: 127]
+
+===== Версія VS Code =====
+$ code --version
+/bin/sh: 1: code: not found
+[exit code: 127]
+
+===== git init =====
+$ git init -b main
+Initialized empty Git repository in /home/runner/work/_temp/proj/.git/
+[exit code: 0]
+
+===== git autocrlf =====
+$ git config core.autocrlf false
+
+[exit code: 0]
+
+===== git user.name =====
+$ git config user.name "Alex134619"
+
+[exit code: 0]
+
+===== git user.email =====
+$ git config user.email "alex134619@users.noreply.github.com"
+
+[exit code: 0]
+
+===== npm init =====
+$ npm init -y
+Wrote to /home/runner/work/_temp/proj/package.json:
+
+{
+  "name": "proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+[exit code: 0]
+
+===== npm pkg name =====
+$ npm pkg set name=lab04-terebniov-ict326bd
+
+[exit code: 0]
+
+===== npm pkg type =====
+$ npm pkg set type=module
+
+[exit code: 0]
+
+===== npm install =====
+$ npm install --save-dev --save-exact prettier@3.9.9 eslint@10.12.0 @eslint/js@10.0.1 globals@17.13.0 eslint-config-prettier@10.1.8
+
+added 81 packages, and audited 82 packages in 2s
+
+20 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+[exit code: 0]
+
+===== find-config-path =====
+$ npx prettier --find-config-path package.json
+.prettierrc.json
+[exit code: 0]
+
+===== eslint eslint.config.js =====
+$ npx eslint eslint.config.js
+
+[exit code: 0]
+
+===== git add =====
+$ git add .
+
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+A  .gitignore
+A  .prettierignore
+A  .prettierrc.json
+A  eslint.config.js
+A  package-lock.json
+A  package.json
+[exit code: 0]
+
+===== git commit =====
+$ git commit -m "Configure Prettier and ESLint"
+[main (root-commit) bcd140a] Configure Prettier and ESLint
+ 6 files changed, 1113 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .prettierignore
+ create mode 100644 .prettierrc.json
+ create mode 100644 eslint.config.js
+ create mode 100644 package-lock.json
+ create mode 100644 package.json
+[exit code: 0]
+
+===== node src/app.js (початковий запуск) =====
+$ node src/app.js
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1440.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3795.00 UAH
+Valid orders: 3
+Free seats, event 1: 118
+Close 'new' order: closed
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+[exit code: 0]
+
+===== git add =====
+$ git add .
+
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+A  DEFECTS.md
+A  legacy/old-report.js
+A  src/app.js
+[exit code: 0]
+
+===== git commit =====
+$ git commit -m "Add initial code with defects"
+[main 9972907] Add initial code with defects
+ 3 files changed, 448 insertions(+)
+ create mode 100644 DEFECTS.md
+ create mode 100644 legacy/old-report.js
+ create mode 100644 src/app.js
+[exit code: 0]
+
+===== git show initial app.js =====
+$ git show HEAD:src/app.js
+// Concert agency: events, tickets and orders
+const limits = { 'max-items': 6, "minAge": 16, maxPerOrder: 8, 'currency': "UAH" };
+const config = { mode: "test", retries: 2, mode: "prod" }
+const unusedTax = 0.2;
+const greeting = "I'm here";
+const motto = 'Live music';  
+const point = {
+  x: 1,
+  y: 2
+};
+const ticketBox = { event: 1, seats: [1, 2],
+  owner: "Ira" }
+const tiny = {a: 1}; const tiny2 = { b: 2 }
+
+const events = [
+{ id: 1, title: "Rock Night", city: 'Kyiv', basePrice: 800, capacity: 120, active: true },
+  { id: 2, title: 'Jazz Evening', city: "Lviv", basePrice: 650, capacity: 80, active: true },
+   { id: 3, title: "Pop Festival", city: "Odesa", basePrice: 1200, capacity: 300, active: false },
+	{ id: 4, title: "Classic Hall", city: 'Kyiv', basePrice: 900, capacity: 150, active: true },
+        { id: 5, title: "Indie Open Air", city: "Kharkiv", basePrice: 500, capacity: 200, active: true },
+ { id: 6, title: "Electro Wave", city: "Dnipro", basePrice: 700, capacity: 100, active: false },
+  { id: 7, title: 'Folk Fest', city: 'Lviv', basePrice: 450, capacity: 250, active: true },
+  { id: 8, title: "Metal Storm", city: "Kyiv", basePrice: 1000, capacity: 180, active: true },
+]
+
+function createTicket(eventId, seat, buyer, price) {
+	return { eventId: eventId, seat: seat, buyer: buyer, price: price };
+}
+
+function findEvent(id) {
+   return events.find(function (e) { return e.id === id; });
+}
+
+function getActiveEvents() {
+        return events.filter(function(e) { return e.active })
+}
+
+
+
+// discounts: student 15%, vip 10%, kids 30%
+const calcDiscount = (type) => {
+    switch (type) {
+        case "student":
+            return 0.15;
+        case "vip":
+            return 0.2;
+        case "kids":
+            return 0.3;
+        case "student":
+            return 0.5;
+        default:
+            return 0;
+    }
+};
+const applyDiscount = (price,type) => price*(1 - calcDiscount(type));
+const isBigEvent = event => event.capacity >= 200
+const getTitle = (e) => e.title;
+const double = (x) => x*2, inc = y => y+ 1;
+
+function formatMoney(amount, currency) {
+  currency = currency || "UAH"
+  return amount.toFixed(2) + " " + currency;
+}
+
+function buildLine(label, value, unit) {
+  unit = unit ?? "";
+   
+	return `${label}: ${value} ${unit}`.trim()
+}
+
+function countFreeSeats(event, soldSeats) {
+	let free = 0;
+	for (let seat = 0; seat <= event.capacity; seat++) {
+        if (!soldSeats.includes(seat)) free++;
+	}
+	return free  
+}
+
+function createOrder(id, buyerName, eventId, seats, type) {
+  buyerName = buyerName;
+  const event = findEvent(eventId)
+  if (!event) { throw new Error("No event " + eventId) }
+  if (seats.length === 0) {}
+  let total_price = 0;
+  const tickets = [];
+  for (const seat of seats) {
+    const t = createTicket(eventId, seat, buyerName, applyDiscount(event.basePrice, type));
+    tickets.push(t);
+    total_price += t.price;
+  }
+  return { id: id, buyer: buyerName, tickets: tickets, total: total_price, status: "new" };
+}
+
+function closeOrder(status) {
+  if (status = "done") { return "closed" }
+  return "open"
+}
+
+function validateOrder(order) {
+  if (order) {
+    for (const t of order.tickets) {
+      if (t.price > 0) {
+        if (t.seat) {
+          return true;
+        }
+      }
+    }
+  }
+  return false
+}
+
+function countByCity(list) {
+  const stats = {};
+  for (const ev of list) {
+    stats[ev.city] = (stats[ev.city] || 0) + 1;
+  }
+  return stats
+}
+
+function printStats(stats) {
+  for (const city in stats) {
+    console.log("  " + city + ": " + stats[city]);
+  }
+}
+
+function checkPrice(price) {
+  if (price === NaN) { return "bad price"; }
+  return price > 0 ? "ok" : "bad price"
+}
+
+function label(ev) {
+  if (!!ev.active) { return "on sale"; }
+  return "closed";
+}
+
+function canSell(event, order) {
+  const sellable = event.active && order.tickets.length > 0 &&
+     order.tickets.length <= limits.maxPerOrder
+     && event.capacity > order.tickets.length
+  return sellable
+}
+
+function describeOrder(id, buyer, title, count, total) {
+  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`
+}
+
+function oldCalc(x) { return x * 2 }
+
+function brokenReport() {
+	return totl + 1;
+  console.log("never printed");
+}
+
+
+   
+
+const reporter = {
+  print: function (msg) { console.log(msg) },
+  width: 30,
+};
+
+// ---- main part ----
+reporter.print("=== Concert agency report ===")
+console.log(greeting +" "+motto)
+let seatA = 1; let seatB = 2; console.log(seatA+seatB)
+console.log("Point sum: " + (point.x + point.y) + ", box owner: " + ticketBox.owner)
+console.log("Tiny: " + (tiny.a + tiny2.b) + ", limit: " + limits["max-items"])
+console.log("Mode: " + config.mode + ", double 4 = " + double(4) + ", inc 4 = " + inc(4))
+
+const active = getActiveEvents()
+reporter.print("Active events: " + active.length)
+reporter.print("Titles: " + events.map(function (e) { return e.title }).join(", "))
+reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "))
+
+let type = process.argv[2]
+type = type || "vip"
+
+const orders = [
+  createOrder(101, "Olena", 1, [1, 2, 3], "student"),
+  createOrder(102, "Taras", 4, [10, 11], type),
+  createOrder(103, "Ira", 7, [5], "kids")
+]
+
+for (const order of orders) {
+  const ticket_count = order.tickets.length
+  console.log(describeOrder(order.id, order.buyer, findEvent(order.tickets[0].eventId).title, ticket_count, formatMoney(order.total)))
+}
+
+const revenue = orders.reduce((sum, o) => sum + o.total, 0)
+console.log(buildLine("Revenue", formatMoney(revenue)))
+console.log("Valid orders: " + orders.filter(validateOrder).length)
+console.log("Free seats, event 1: " + countFreeSeats(events[0], [1, 2, 3]))
+console.log("Close 'new' order: " + closeOrder("new"))
+console.log("Price check: " + checkPrice(100) + ", label: " + label(events[2]))
+console.log("Can sell: " + canSell(events[0], orders[0]))
+console.log("Events per city:")
+printStats(countByCity(events))
+for (const city in countByCity(events)) { console.log("city key: " + city) }
+
+const count = orders.length
+if (count > 0) console.log("Orders total: " + count)
+[exit code: 0]
+
+===== 3.2 prettier --check . (до форматування) =====
+$ npx prettier --check .
+Checking formatting...
+[[33mwarn[39m] DEFECTS.md
+[[33mwarn[39m] eslint.config.js
+[[33mwarn[39m] src/app.js
+[[33mwarn[39m] Code style issues found in 3 files. Run Prettier with --write to fix.
+[exit code: 1]
+
+===== 3.3 eslint . -o reports/eslint-before.txt =====
+$ npx eslint . -o reports/eslint-before.txt
+
+[exit code: 1]
+
+----- eslint-before.txt -----
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+   27:11  warning  Expected property shorthand                                                                                 object-shorthand
+   27:29  warning  Expected property shorthand                                                                                 object-shorthand
+   27:41  warning  Expected property shorthand                                                                                 object-shorthand
+   27:55  warning  Expected property shorthand                                                                                 object-shorthand
+   31:23  error    Unexpected function expression                                                                              prefer-arrow-callback
+   35:30  error    Unexpected function expression                                                                              prefer-arrow-callback
+   49:9   error    Duplicate case label                                                                                        no-duplicate-case
+   61:3   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+   66:3   warning  Assignment (=) can be replaced with operator assignment (??=)                                               logical-assignment-operators
+   80:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+   83:27  error    Empty block statement                                                                                       no-empty
+   84:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+   89:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+   91:12  warning  Expected property shorthand                                                                                 object-shorthand
+   91:38  warning  Expected property shorthand                                                                                 object-shorthand
+   91:63  error    Identifier 'total_price' is not in camel case                                                               camelcase
+   95:7   error    Expected a conditional expression and instead saw an assignment                                             no-cond-assign
+   95:7   error    Unexpected constant condition                                                                               no-constant-condition
+   95:7   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  103:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  121:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  127:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  132:7   error    Redundant double negation                                                                                   no-extra-boolean-cast
+  147:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  149:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  150:9   error    'totl' is not defined                                                                                       no-undef
+  151:3   error    Unreachable code                                                                                            no-unreachable
+  158:3   warning  Expected method shorthand                                                                                   object-shorthand
+  172:40  error    Unexpected function expression                                                                              prefer-arrow-callback
+  176:1   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  185:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  198:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 34 problems (23 errors, 11 warnings)
+  4 errors and 10 warnings potentially fixable with the `--fix` option.
+
+
+===== 3.4 prettier --check src/app.js (синтаксична помилка) =====
+$ npx prettier --check src/app.js
+Checking formatting...
+Error occurred when checking code style in the above file.
+[[31merror[39m] src/app.js: SyntaxError: Unexpected token (202:1)
+[[31merror[39m]   200 | const count = orders.length
+[[31merror[39m]   201 | if (count > 0) console.log("Orders total: " + count)
+[[31merror[39m] > 202 |
+[[31merror[39m]       | ^
+[exit code: 2]
+
+===== 3.4 eslint src/app.js (синтаксична помилка) =====
+$ npx eslint src/app.js
+
+/home/runner/work/_temp/proj/src/app.js
+  202:1  error  Parsing error: Unexpected token
+
+✖ 1 problem (1 error, 0 warnings)
+[exit code: 1]
+
+===== 3.4 git restore src/app.js =====
+$ git restore src/app.js
+
+[exit code: 0]
+
+===== 3.5 prettier src/app.js (без запису, перші рядки) =====
+$ npx prettier src/app.js
+// Concert agency: events, tickets and orders
+const limits = { "max-items": 6, "minAge": 16, "maxPerOrder": 8, "currency": "UAH" };
+const config = { mode: "test", retries: 2, mode: "prod" };
+const unusedTax = 0.2;
+const greeting = "I'm here";
+const motto = "Live music";
+const point = { x: 1, y: 2 };
+const ticketBox = { event: 1, seats: [1, 2], owner: "Ira" };
+const tiny = { a: 1 };
+const tiny2 = { b: 2 };
+
+const events = [
+  {
+    id: 1,
+    title: "Rock Night",
+    city: "Kyiv",
+    basePrice: 800,
+    capacity: 120,
+    active: true,
+  },
+  {
+    id: 2,
+    title: "Jazz Evening",
+    city: "Lviv",
+    basePrice: 650,
+    capacity: 80,
+    active: true,
+  },
+  {
+    id: 3,
+    title: "Pop Festival",
+    city: "Odesa",
+    basePrice: 1200,
+    capacity: 300,
+    active: false,
+  },
+  {
+    id: 4,
+    title: "Classic Hall",
+    city: "Kyiv",
+    basePrice: 900,
+    capacity: 150,
+    active: true,
+  },
+  {
+    id: 5,
+    title: "Indie Open Air",
+    city: "Kharkiv",
+    basePrice: 500,
+    capacity: 200,
+    active: true,
+  },
+  {
+    id: 6,
+    title: "Electro Wave",
+    city: "Dnipro",
+    basePrice: 700,
+    capacity: 100,
+    active: false,
+  },
+  {
+    id: 7,
+    title: "Folk Fest",
+    city: "Lviv",
+    basePrice: 450,
+    capacity: 250,
+    active: true,
+  },
+  {
+    id: 8,
+    title: "Metal Storm",
+    city: "Kyiv",
+    basePrice: 1000,
+    capacity: 180,
+    active: true,
+  },
+];
+
+function createTicket(eventId, seat, buyer, price) {
+  return { eventId: eventId, seat: seat, buyer: buyer, price: price };
+}
+
+function findEvent(id) {
+  return events.find(function (e) {
+    return e.id === id;
+  });
+}
+
+function getActiveEvents() {
+  return events.filter(function (e) {
+    return e.active;
+  });
+}
+
+// discounts: student 15%, vip 10%, kids 30%
+const calcDiscount = (type) => {
+  switch (type) {
+    case "student":
+      return 0.15;
+    case "vip":
+      return 0.2;
+    case "kids":
+      return 0.3;
+    case "student":
+      return 0.5;
+    default:
+      return 0;
+  }
+};
+const applyDiscount = (price, type) => price * (1 - calcDiscount(type));
+const isBigEvent = (event) => event.capacity >= 200;
+const getTitle = (e) => e.title;
+const double = (x) => x * 2,
+  inc = (y) => y + 1;
+
+function formatMoney(amount, currency) {
+  currency = currency || "UAH";
+  return amount.toFixed(2) + " " + currency;
+}
+
+function buildLine(label, value, unit) {
+  unit = unit ?? "";
+
+  return `${label}: ${value} ${unit}`.trim();
+}
+
+function countFreeSeats(event, soldSeats) {
+  let free = 0;
+  for (let seat = 0; seat <= event.capacity; seat++) {
+    if (!soldSeats.includes(seat)) free++;
+  }
+  return free;
+}
+
+function createOrder(id, buyerName, eventId, seats, type) {
+  buyerName = buyerName;
+  const event = findEvent(eventId);
+  if (!event) {
+    throw new Error("No event " + eventId);
+  }
+  if (seats.length === 0) {
+  }
+  let total_price = 0;
+  const tickets = [];
+  for (const seat of seats) {
+    const t = createTicket(
+      eventId,
+      seat,
+      buyerName,
+      applyDiscount(event.basePrice, type),
+    );
+    tickets.push(t);
+    total_price += t.price;
+  }
+  return {
+    id: id,
+    buyer: buyerName,
+    tickets: tickets,
+    total: total_price,
+    status: "new",
+  };
+}
+
+function closeOrder(status) {
+  if ((status = "done")) {
+    return "closed";
+  }
+  return "open";
+}
+
+function validateOrder(order) {
+  if (order) {
+    for (const t of order.tickets) {
+      if (t.price > 0) {
+        if (t.seat) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function countByCity(list) {
+  const stats = {};
+  for (const ev of list) {
+    stats[ev.city] = (stats[ev.city] || 0) + 1;
+  }
+  return stats;
+}
+
+function printStats(stats) {
+  for (const city in stats) {
+    console.log("  " + city + ": " + stats[city]);
+  }
+}
+
+function checkPrice(price) {
+  if (price === NaN) {
+    return "bad price";
+  }
+  return price > 0 ? "ok" : "bad price";
+}
+
+function label(ev) {
+  if (!!ev.active) {
+    return "on sale";
+  }
+  return "closed";
+}
+
+function canSell(event, order) {
+  const sellable =
+    event.active
+    && order.tickets.length > 0
+    && order.tickets.length <= limits.maxPerOrder
+    && event.capacity > order.tickets.length;
+  return sellable;
+}
+
+function describeOrder(id, buyer, title, count, total) {
+  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`;
+}
+
+function oldCalc(x) {
+  return x * 2;
+}
+
+function brokenReport() {
+  return totl + 1;
+  console.log("never printed");
+}
+
+const reporter = {
+  print: function (msg) {
+    console.log(msg);
+  },
+  width: 30,
+};
+
+// ---- main part ----
+reporter.print("=== Concert agency report ===");
+console.log(greeting + " " + motto);
+let seatA = 1;
+let seatB = 2;
+console.log(seatA + seatB);
+console.log("Point sum: " + (point.x + point.y) + ", box owner: " + ticketBox.owner);
+console.log("Tiny: " + (tiny.a + tiny2.b) + ", limit: " + limits["max-items"]);
+console.log("Mode: " + config.mode + ", double 4 = " + double(4) + ", inc 4 = " + inc(4));
+
+const active = getActiveEvents();
+reporter.print("Active events: " + active.length);
+reporter.print(
+  "Titles: "
+    + events
+      .map(function (e) {
+        return e.title;
+      })
+      .join(", "),
+);
+reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "));
+
+let type = process.argv[2];
+type = type || "vip";
+
+const orders = [
+  createOrder(101, "Olena", 1, [1, 2, 3], "student"),
+  createOrder(102, "Taras", 4, [10, 11], type),
+  createOrder(103, "Ira", 7, [5], "kids"),
+];
+
+for (const order of orders) {
+  const ticket_count = order.tickets.length;
+  console.log(
+    describeOrder(
+      order.id,
+      order.buyer,
+      findEvent(order.tickets[0].eventId).title,
+      ticket_count,
+      formatMoney(order.total),
+    ),
+  );
+}
+
+const revenue = orders.reduce((sum, o) => sum + o.total, 0);
+console.log(buildLine("Revenue", formatMoney(revenue)));
+console.log("Valid orders: " + orders.filter(validateOrder).length);
+console.log("Free seats, event 1: " + countFreeSeats(events[0], [1, 2, 3]));
+console.log("Close 'new' order: " + closeOrder("new"));
+console.log("Price check: " + checkPrice(100) + ", label: " + label(events[2]));
+console.log("Can sell: " + canSell(events[0], orders[0]));
+console.log("Events per city:");
+printStats(countByCity(events));
+for (const city in countByCity(events)) {
+  console.log("city key: " + city);
+}
+
+const count = orders.length;
+if (count > 0) console.log("Orders total: " + count);
+[exit code: 0]
+
+===== 3.5 prettier --write . =====
+$ npx prettier --write .
+[90m.prettierrc.json[39m 23ms (unchanged)
+DEFECTS.md 75ms
+eslint.config.js 11ms
+[90mpackage.json[39m 2ms (unchanged)
+src/app.js 65ms
+[exit code: 0]
+
+===== 3.5 prettier --check . (після) =====
+$ npx prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+[exit code: 0]
+
+===== 3.5 git diff --stat =====
+$ git diff --stat
+ DEFECTS.md       |  84 ++++++++--------
+ eslint.config.js |  30 +++---
+ src/app.js       | 300 ++++++++++++++++++++++++++++++++++++-------------------
+ 3 files changed, 254 insertions(+), 160 deletions(-)
+[exit code: 0]
+
+===== 3.5 git diff src/app.js =====
+$ git diff src/app.js
+diff --git a/src/app.js b/src/app.js
+index 40fdd87..1a4369e 100644
+--- a/src/app.js
++++ b/src/app.js
+@@ -1,99 +1,171 @@
+ // Concert agency: events, tickets and orders
+-const limits = { 'max-items': 6, "minAge": 16, maxPerOrder: 8, 'currency': "UAH" };
+-const config = { mode: "test", retries: 2, mode: "prod" }
++const limits = { "max-items": 6, "minAge": 16, "maxPerOrder": 8, "currency": "UAH" };
++const config = { mode: "test", retries: 2, mode: "prod" };
+ const unusedTax = 0.2;
+ const greeting = "I'm here";
+-const motto = 'Live music';  
+-const point = {
+-  x: 1,
+-  y: 2
+-};
+-const ticketBox = { event: 1, seats: [1, 2],
+-  owner: "Ira" }
+-const tiny = {a: 1}; const tiny2 = { b: 2 }
++const motto = "Live music";
++const point = { x: 1, y: 2 };
++const ticketBox = { event: 1, seats: [1, 2], owner: "Ira" };
++const tiny = { a: 1 };
++const tiny2 = { b: 2 };
+ 
+ const events = [
+-{ id: 1, title: "Rock Night", city: 'Kyiv', basePrice: 800, capacity: 120, active: true },
+-  { id: 2, title: 'Jazz Evening', city: "Lviv", basePrice: 650, capacity: 80, active: true },
+-   { id: 3, title: "Pop Festival", city: "Odesa", basePrice: 1200, capacity: 300, active: false },
+-	{ id: 4, title: "Classic Hall", city: 'Kyiv', basePrice: 900, capacity: 150, active: true },
+-        { id: 5, title: "Indie Open Air", city: "Kharkiv", basePrice: 500, capacity: 200, active: true },
+- { id: 6, title: "Electro Wave", city: "Dnipro", basePrice: 700, capacity: 100, active: false },
+-  { id: 7, title: 'Folk Fest', city: 'Lviv', basePrice: 450, capacity: 250, active: true },
+-  { id: 8, title: "Metal Storm", city: "Kyiv", basePrice: 1000, capacity: 180, active: true },
+-]
++  {
++    id: 1,
++    title: "Rock Night",
++    city: "Kyiv",
++    basePrice: 800,
++    capacity: 120,
++    active: true,
++  },
++  {
++    id: 2,
++    title: "Jazz Evening",
++    city: "Lviv",
++    basePrice: 650,
++    capacity: 80,
++    active: true,
++  },
++  {
++    id: 3,
++    title: "Pop Festival",
++    city: "Odesa",
++    basePrice: 1200,
++    capacity: 300,
++    active: false,
++  },
++  {
++    id: 4,
++    title: "Classic Hall",
++    city: "Kyiv",
++    basePrice: 900,
++    capacity: 150,
++    active: true,
++  },
++  {
++    id: 5,
++    title: "Indie Open Air",
++    city: "Kharkiv",
++    basePrice: 500,
++    capacity: 200,
++    active: true,
++  },
++  {
++    id: 6,
++    title: "Electro Wave",
++    city: "Dnipro",
++    basePrice: 700,
++    capacity: 100,
++    active: false,
++  },
++  {
++    id: 7,
++    title: "Folk Fest",
++    city: "Lviv",
++    basePrice: 450,
++    capacity: 250,
++    active: true,
++  },
++  {
++    id: 8,
++    title: "Metal Storm",
++    city: "Kyiv",
++    basePrice: 1000,
++    capacity: 180,
++    active: true,
++  },
++];
+ 
+ function createTicket(eventId, seat, buyer, price) {
+-	return { eventId: eventId, seat: seat, buyer: buyer, price: price };
++  return { eventId: eventId, seat: seat, buyer: buyer, price: price };
+ }
+ 
+ function findEvent(id) {
+-   return events.find(function (e) { return e.id === id; });
++  return events.find(function (e) {
++    return e.id === id;
++  });
+ }
+ 
+ function getActiveEvents() {
+-        return events.filter(function(e) { return e.active })
++  return events.filter(function (e) {
++    return e.active;
++  });
+ }
+ 
+-
+-
+ // discounts: student 15%, vip 10%, kids 30%
+ const calcDiscount = (type) => {
+-    switch (type) {
+-        case "student":
+-            return 0.15;
+-        case "vip":
+-            return 0.2;
+-        case "kids":
+-            return 0.3;
+-        case "student":
+-            return 0.5;
+-        default:
+-            return 0;
+-    }
++  switch (type) {
++    case "student":
++      return 0.15;
++    case "vip":
++      return 0.2;
++    case "kids":
++      return 0.3;
++    case "student":
++      return 0.5;
++    default:
++      return 0;
++  }
+ };
+-const applyDiscount = (price,type) => price*(1 - calcDiscount(type));
+-const isBigEvent = event => event.capacity >= 200
++const applyDiscount = (price, type) => price * (1 - calcDiscount(type));
++const isBigEvent = (event) => event.capacity >= 200;
+ const getTitle = (e) => e.title;
+-const double = (x) => x*2, inc = y => y+ 1;
++const double = (x) => x * 2,
++  inc = (y) => y + 1;
+ 
+ function formatMoney(amount, currency) {
+-  currency = currency || "UAH"
++  currency = currency || "UAH";
+   return amount.toFixed(2) + " " + currency;
+ }
+ 
+ function buildLine(label, value, unit) {
+   unit = unit ?? "";
+-   
+-	return `${label}: ${value} ${unit}`.trim()
++
++  return `${label}: ${value} ${unit}`.trim();
+ }
+ 
+ function countFreeSeats(event, soldSeats) {
+-	let free = 0;
+-	for (let seat = 0; seat <= event.capacity; seat++) {
+-        if (!soldSeats.includes(seat)) free++;
+-	}
+-	return free  
++  let free = 0;
++  for (let seat = 0; seat <= event.capacity; seat++) {
++    if (!soldSeats.includes(seat)) free++;
++  }
++  return free;
+ }
+ 
+ function createOrder(id, buyerName, eventId, seats, type) {
+   buyerName = buyerName;
+-  const event = findEvent(eventId)
+-  if (!event) { throw new Error("No event " + eventId) }
+-  if (seats.length === 0) {}
++  const event = findEvent(eventId);
++  if (!event) {
++    throw new Error("No event " + eventId);
++  }
++  if (seats.length === 0) {
++  }
+   let total_price = 0;
+   const tickets = [];
+   for (const seat of seats) {
+-    const t = createTicket(eventId, seat, buyerName, applyDiscount(event.basePrice, type));
++    const t = createTicket(
++      eventId,
++      seat,
++      buyerName,
++      applyDiscount(event.basePrice, type),
++    );
+     tickets.push(t);
+     total_price += t.price;
+   }
+-  return { id: id, buyer: buyerName, tickets: tickets, total: total_price, status: "new" };
++  return {
++    id: id,
++    buyer: buyerName,
++    tickets: tickets,
++    total: total_price,
++    status: "new",
++  };
+ }
+ 
+ function closeOrder(status) {
+-  if (status = "done") { return "closed" }
+-  return "open"
++  if ((status = "done")) {
++    return "closed";
++  }
++  return "open";
+ }
+ 
+ function validateOrder(order) {
+@@ -106,7 +178,7 @@ function validateOrder(order) {
+       }
+     }
+   }
+-  return false
++  return false;
+ }
+ 
+ function countByCity(list) {
+@@ -114,7 +186,7 @@ function countByCity(list) {
+   for (const ev of list) {
+     stats[ev.city] = (stats[ev.city] || 0) + 1;
+   }
+-  return stats
++  return stats;
+ }
+ 
+ function printStats(stats) {
+@@ -124,78 +196,104 @@ function printStats(stats) {
+ }
+ 
+ function checkPrice(price) {
+-  if (price === NaN) { return "bad price"; }
+-  return price > 0 ? "ok" : "bad price"
++  if (price === NaN) {
++    return "bad price";
++  }
++  return price > 0 ? "ok" : "bad price";
+ }
+ 
+ function label(ev) {
+-  if (!!ev.active) { return "on sale"; }
++  if (!!ev.active) {
++    return "on sale";
++  }
+   return "closed";
+ }
+ 
+ function canSell(event, order) {
+-  const sellable = event.active && order.tickets.length > 0 &&
+-     order.tickets.length <= limits.maxPerOrder
+-     && event.capacity > order.tickets.length
+-  return sellable
++  const sellable =
++    event.active
++    && order.tickets.length > 0
++    && order.tickets.length <= limits.maxPerOrder
++    && event.capacity > order.tickets.length;
++  return sellable;
+ }
+ 
+ function describeOrder(id, buyer, title, count, total) {
+-  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`
++  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`;
+ }
+ 
+-function oldCalc(x) { return x * 2 }
++function oldCalc(x) {
++  return x * 2;
++}
+ 
+ function brokenReport() {
+-	return totl + 1;
++  return totl + 1;
+   console.log("never printed");
+ }
+ 
+-
+-   
+-
+ const reporter = {
+-  print: function (msg) { console.log(msg) },
++  print: function (msg) {
++    console.log(msg);
++  },
+   width: 30,
+ };
+ 
+ // ---- main part ----
+-reporter.print("=== Concert agency report ===")
+-console.log(greeting +" "+motto)
+-let seatA = 1; let seatB = 2; console.log(seatA+seatB)
+-console.log("Point sum: " + (point.x + point.y) + ", box owner: " + ticketBox.owner)
+-console.log("Tiny: " + (tiny.a + tiny2.b) + ", limit: " + limits["max-items"])
+-console.log("Mode: " + config.mode + ", double 4 = " + double(4) + ", inc 4 = " + inc(4))
++reporter.print("=== Concert agency report ===");
++console.log(greeting + " " + motto);
++let seatA = 1;
++let seatB = 2;
++console.log(seatA + seatB);
++console.log("Point sum: " + (point.x + point.y) + ", box owner: " + ticketBox.owner);
++console.log("Tiny: " + (tiny.a + tiny2.b) + ", limit: " + limits["max-items"]);
++console.log("Mode: " + config.mode + ", double 4 = " + double(4) + ", inc 4 = " + inc(4));
+ 
+-const active = getActiveEvents()
+-reporter.print("Active events: " + active.length)
+-reporter.print("Titles: " + events.map(function (e) { return e.title }).join(", "))
+-reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "))
++const active = getActiveEvents();
++reporter.print("Active events: " + active.length);
++reporter.print(
++  "Titles: "
++    + events
++      .map(function (e) {
++        return e.title;
++      })
++      .join(", "),
++);
++reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "));
+ 
+-let type = process.argv[2]
+-type = type || "vip"
++let type = process.argv[2];
++type = type || "vip";
+ 
+ const orders = [
+   createOrder(101, "Olena", 1, [1, 2, 3], "student"),
+   createOrder(102, "Taras", 4, [10, 11], type),
+-  createOrder(103, "Ira", 7, [5], "kids")
+-]
++  createOrder(103, "Ira", 7, [5], "kids"),
++];
+ 
+ for (const order of orders) {
+-  const ticket_count = order.tickets.length
+-  console.log(describeOrder(order.id, order.buyer, findEvent(order.tickets[0].eventId).title, ticket_count, formatMoney(order.total)))
+-}
+-
+-const revenue = orders.reduce((sum, o) => sum + o.total, 0)
+-console.log(buildLine("Revenue", formatMoney(revenue)))
+-console.log("Valid orders: " + orders.filter(validateOrder).length)
+-console.log("Free seats, event 1: " + countFreeSeats(events[0], [1, 2, 3]))
+-console.log("Close 'new' order: " + closeOrder("new"))
+-console.log("Price check: " + checkPrice(100) + ", label: " + label(events[2]))
+-console.log("Can sell: " + canSell(events[0], orders[0]))
+-console.log("Events per city:")
+-printStats(countByCity(events))
+-for (const city in countByCity(events)) { console.log("city key: " + city) }
+-
+-const count = orders.length
+-if (count > 0) console.log("Orders total: " + count)
++  const ticket_count = order.tickets.length;
++  console.log(
++    describeOrder(
++      order.id,
++      order.buyer,
++      findEvent(order.tickets[0].eventId).title,
++      ticket_count,
++      formatMoney(order.total),
++    ),
++  );
++}
++
++const revenue = orders.reduce((sum, o) => sum + o.total, 0);
++console.log(buildLine("Revenue", formatMoney(revenue)));
++console.log("Valid orders: " + orders.filter(validateOrder).length);
++console.log("Free seats, event 1: " + countFreeSeats(events[0], [1, 2, 3]));
++console.log("Close 'new' order: " + closeOrder("new"));
++console.log("Price check: " + checkPrice(100) + ", label: " + label(events[2]));
++console.log("Can sell: " + canSell(events[0], orders[0]));
++console.log("Events per city:");
++printStats(countByCity(events));
++for (const city in countByCity(events)) {
++  console.log("city key: " + city);
++}
++
++const count = orders.length;
++if (count > 0) console.log("Orders total: " + count);
+[exit code: 0]
+
+===== 3.5 git diff eslint.config.js =====
+$ git diff eslint.config.js
+diff --git a/eslint.config.js b/eslint.config.js
+index 6c200c7..70e4814 100644
+--- a/eslint.config.js
++++ b/eslint.config.js
+@@ -1,27 +1,23 @@
+-import js from '@eslint/js';
+-import globals from 'globals';
+-import eslintConfigPrettier from 'eslint-config-prettier/flat';
++import js from "@eslint/js";
++import globals from "globals";
++import eslintConfigPrettier from "eslint-config-prettier/flat";
+ 
+ export default [
+-  {
+-    ignores: ['node_modules/**', 'legacy/**', 'reports/**'],
+-  },
++  { ignores: ["node_modules/**", "legacy/**", "reports/**"] },
+   js.configs.recommended,
+   {
+     languageOptions: {
+-      ecmaVersion: 'latest',
+-      sourceType: 'module',
+-      globals: {
+-        ...globals.node,
+-      },
++      ecmaVersion: "latest",
++      sourceType: "module",
++      globals: { ...globals.node },
+     },
+     rules: {
+-      'object-shorthand': ['warn', 'always'],
+-      'prefer-arrow-callback': 'error',
+-      'logical-assignment-operators': ['warn', 'always'],
+-      'guard-for-in': 'error',
+-      'max-depth': ['warn', 3],
+-      camelcase: 'error',
++      "object-shorthand": ["warn", "always"],
++      "prefer-arrow-callback": "error",
++      "logical-assignment-operators": ["warn", "always"],
++      "guard-for-in": "error",
++      "max-depth": ["warn", 3],
++      "camelcase": "error",
+     },
+   },
+   eslintConfigPrettier,
+[exit code: 0]
+
+===== 3.5 eslint.config.js (після Prettier) =====
+import js from "@eslint/js";
+import globals from "globals";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
+
+export default [
+  { ignores: ["node_modules/**", "legacy/**", "reports/**"] },
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: { ...globals.node },
+    },
+    rules: {
+      "object-shorthand": ["warn", "always"],
+      "prefer-arrow-callback": "error",
+      "logical-assignment-operators": ["warn", "always"],
+      "guard-for-in": "error",
+      "max-depth": ["warn", 3],
+      "camelcase": "error",
+    },
+  },
+  eslintConfigPrettier,
+];
+
+
+===== 3.5 DEFECTS.md після prettier =====
+# Карта дефектів
+
+Номери рядків — у вихідному файлі src/app.js (коміт Add initial code with defects).
+
+| №   | Рядок              | Група | Опис дефекту                                                                                | Прогноз                                            | Виявлено                    | Виправлено                           |
+| --- | ------------------ | ----- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------- | ------------------------------------ |
+| 1   | 16–23              | Ф1    | змішані відступи: 1, 3, 8 пробілів і табуляція                                              | Prettier, tabWidth, useTabs                        | Prettier (prettier --check) | Prettier                             |
+| 2   | 55, 58, 164        | Ф2    | неоднакові пробіли навколо операторів і ком: price*(1 - …), (price,type), y+ 1              | Prettier, базове форматування                      | Prettier (prettier --check) | Prettier                             |
+| 3   | 2, 5, 6            | Ф3    | лапки впереміш, є апостроф: "I'm here", 'Live music'                                        | Prettier, singleQuote                              | Prettier (prettier --check) | Prettier                             |
+| 4   | 3, 11              | Ф4    | частина інструкцій без ;                                                                    | Prettier, semi                                     | Prettier (prettier --check) | Prettier                             |
+| 5   | 186                | Ф5    | виклик з 5 аргументами в одному рядку довжиною 134 символи                                  | Prettier, printWidth                               | Prettier (prettier --check) | Prettier                             |
+| 6   | 13, 165            | Ф6    | кілька інструкцій в одному рядку                                                            | Prettier, базове форматування                      | Prettier (prettier --check) | Prettier                             |
+| 7   | 7–10, 11–12        | Ф7    | короткий об’єкт у кілька рядків і об’єкт із частковим перенесенням                          | Prettier, objectWrap                               | Prettier (prettier --check) | Prettier                             |
+| 8   | 9, 23              | Ф8    | завершальна кома після останнього елемента є / немає                                        | Prettier, trailingComma                            | Prettier (prettier --check) | Prettier                             |
+| 9   | 13                 | Ф9    | об’єкти {a: 1} і { b: 2 }: пробіли в дужках по-різному                                      | Prettier, bracketSpacing                           | Prettier (prettier --check) | Prettier                             |
+| 10  | 56–58              | Ф10   | стрілкові функції з одним параметром у дужках і без                                         | Prettier, arrowParens                              | Prettier (prettier --check) | Prettier                             |
+| 11  | 2                  | Ф11   | ключ 'max-items' потребує лапок, інші ключі то з лапками, то без                            | Prettier, quoteProps                               | Prettier (prettier --check) | Prettier                             |
+| 12  | 137–139            | Ф12   | довгий логічний вираз із 4 умов, довільно перенесений вручну                                | Prettier, printWidth, experimentalOperatorPosition | Prettier (prettier --check) | Prettier                             |
+| 13  | 37–39, 67, 155, 31 | Ф13   | 3+ порожні рядки поспіль, пробіли в кінці рядків, } в одному рядку з кодом                  | Prettier, базове форматування                      | Prettier (prettier --check) | Prettier                             |
+| 14  | 4                  | К     | змінна unusedTax оголошена, але не використана                                              | ESLint, no-unused-vars                             |                             |                                      |
+| 15  | 147                | К     | функція oldCalc оголошена, але не викликається                                              | ESLint, no-unused-vars                             |                             |                                      |
+| 16  | 150                | К     | звернення до неоголошеної змінної totl (функція не викликається)                            | ESLint, no-undef                                   |                             |                                      |
+| 17  | 95                 | К     | присвоєння в умові: if (status = "done")                                                    | ESLint, no-cond-assign                             |                             |                                      |
+| 18  | 151                | К     | код після return                                                                            | ESLint, no-unreachable                             |                             |                                      |
+| 19  | 3                  | К     | однакові ключі mode в об’єкті config                                                        | ESLint, no-dupe-keys                               |                             |                                      |
+| 20  | 49                 | К     | однаковий case "student" у switch                                                           | ESLint, no-duplicate-case                          |                             |                                      |
+| 21  | 80                 | К     | присвоєння параметра самому собі: buyerName = buyerName                                     | ESLint, no-self-assign                             |                             |                                      |
+| 22  | 83                 | К     | порожній блок if (seats.length === 0) {}                                                    | ESLint, no-empty                                   |                             |                                      |
+| 23  | 127                | К     | порівняння з NaN: price === NaN                                                             | ESLint, use-isnan                                  |                             |                                      |
+| 24  | 132                | К     | зайве перетворення на boolean: if (!!ev.active)                                             | ESLint, no-extra-boolean-cast                      |                             |                                      |
+| 25  | 27                 | В     | { eventId: eventId, … } у createTicket: не використано скорочений запис                     | ESLint, object-shorthand                           |                             |                                      |
+| 26  | 91                 | В     | { id: id, buyer: …, tickets: tickets } у createOrder: не використано скорочений запис       | ESLint, object-shorthand                           |                             |                                      |
+| 27  | 158                | В     | метод print: function () у reporter: не використано скорочений запис                        | ESLint, object-shorthand                           |                             |                                      |
+| 28  | 31                 | В     | колбек find записано як function                                                            | ESLint, prefer-arrow-callback                      |                             |                                      |
+| 29  | 35                 | В     | колбек filter записано як function                                                          | ESLint, prefer-arrow-callback                      |                             |                                      |
+| 30  | 172                | В     | колбек map записано як function                                                             | ESLint, prefer-arrow-callback                      |                             |                                      |
+| 31  | 61                 | В     | currency = currency                                                                         |                                                    | "UAH"                       | ESLint, logical-assignment-operators |     |     |
+| 32  | 66                 | В     | unit = unit ?? ""                                                                           | ESLint, logical-assignment-operators               |                             |                                      |
+| 33  | 176                | В     | type = type                                                                                 |                                                    | "vip"                       | ESLint, logical-assignment-operators |     |     |
+| 34  | 121                | В     | for...in без перевірки власних властивостей (printStats)                                    | ESLint, guard-for-in                               |                             |                                      |
+| 35  | 198                | В     | for...in без перевірки власних властивостей (основна частина)                               | ESLint, guard-for-in                               |                             |                                      |
+| 36  | 103                | В     | вкладеність блоків 4 рівні у validateOrder                                                  | ESLint, max-depth                                  |                             |                                      |
+| 37  | 84                 | В     | змінна total_price у snake_case                                                             | ESLint, camelcase                                  |                             |                                      |
+| 38  | 185                | В     | змінна ticket_count у snake_case                                                            | ESLint, camelcase                                  |                             |                                      |
+| 39  | 46                 | Л     | знижка vip 0.2 замість 0.1 (замовлення 102: має бути 1620.00 UAH, а виводиться 1440.00 UAH) | жоден                                              | ні (жоден інструмент)       | вручну                               |
+| 40  | 73                 | Л     | умова seat <= event.capacity замість < (вільних місць має бути 117, а виводиться 118)       | жоден                                              | ні (жоден інструмент)       | вручну                               |
+
+
+===== 3.5 node src/app.js (після форматування) =====
+$ node src/app.js
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1440.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3795.00 UAH
+Valid orders: 3
+Free seats, event 1: 118
+Close 'new' order: closed
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+[exit code: 0]
+
+[Порівняння виведення до/після форматування: ІДЕНТИЧНЕ]
+
+===== git add =====
+$ git add .
+
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+M  DEFECTS.md
+M  eslint.config.js
+A  reports/eslint-before.txt
+A  reports/output-before.txt
+M  src/app.js
+[exit code: 0]
+
+===== git commit =====
+$ git commit -m "Format code with Prettier"
+[main b83f8f1] Format code with Prettier
+ 5 files changed, 323 insertions(+), 160 deletions(-)
+ create mode 100644 reports/eslint-before.txt
+ create mode 100644 reports/output-before.txt
+[exit code: 0]
+
+===== 3.6 prettier --check src/app.js (printWidth 40, semi false) =====
+$ npx prettier --check src/app.js
+Checking formatting...
+[[33mwarn[39m] src/app.js
+[[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
+[exit code: 1]
+
+===== 3.6 prettier src/app.js (printWidth 40, semi false) =====
+$ npx prettier src/app.js
+// Concert agency: events, tickets and orders
+const limits = {
+  "max-items": 6,
+  "minAge": 16,
+  "maxPerOrder": 8,
+  "currency": "UAH",
+}
+const config = {
+  mode: "test",
+  retries: 2,
+  mode: "prod",
+}
+const unusedTax = 0.2
+const greeting = "I'm here"
+const motto = "Live music"
+const point = { x: 1, y: 2 }
+const ticketBox = {
+  event: 1,
+  seats: [1, 2],
+  owner: "Ira",
+}
+const tiny = { a: 1 }
+const tiny2 = { b: 2 }
+
+const events = [
+  {
+    id: 1,
+    title: "Rock Night",
+    city: "Kyiv",
+    basePrice: 800,
+    capacity: 120,
+    active: true,
+  },
+  {
+    id: 2,
+    title: "Jazz Evening",
+    city: "Lviv",
+    basePrice: 650,
+    capacity: 80,
+    active: true,
+  },
+  {
+    id: 3,
+    title: "Pop Festival",
+    city: "Odesa",
+    basePrice: 1200,
+    capacity: 300,
+    active: false,
+  },
+  {
+    id: 4,
+    title: "Classic Hall",
+    city: "Kyiv",
+    basePrice: 900,
+    capacity: 150,
+    active: true,
+  },
+  {
+    id: 5,
+    title: "Indie Open Air",
+    city: "Kharkiv",
+    basePrice: 500,
+    capacity: 200,
+    active: true,
+  },
+  {
+    id: 6,
+    title: "Electro Wave",
+    city: "Dnipro",
+    basePrice: 700,
+    capacity: 100,
+    active: false,
+  },
+  {
+    id: 7,
+    title: "Folk Fest",
+    city: "Lviv",
+    basePrice: 450,
+    capacity: 250,
+    active: true,
+  },
+  {
+    id: 8,
+    title: "Metal Storm",
+    city: "Kyiv",
+    basePrice: 1000,
+    capacity: 180,
+    active: true,
+  },
+]
+
+function createTicket(
+  eventId,
+  seat,
+  buyer,
+  price,
+) {
+  return {
+    eventId: eventId,
+    seat: seat,
+    buyer: buyer,
+    price: price,
+  }
+}
+
+function findEvent(id) {
+  return events.find(function (e) {
+    return e.id === id
+  })
+}
+
+function getActiveEvents() {
+  return events.filter(function (e) {
+    return e.active
+  })
+}
+
+// discounts: student 15%, vip 10%, kids 30%
+const calcDiscount = (type) => {
+  switch (type) {
+    case "student":
+      return 0.15
+    case "vip":
+      return 0.2
+    case "kids":
+      return 0.3
+    case "student":
+      return 0.5
+    default:
+      return 0
+  }
+}
+const applyDiscount = (price, type) =>
+  price * (1 - calcDiscount(type))
+const isBigEvent = (event) =>
+  event.capacity >= 200
+const getTitle = (e) => e.title
+const double = (x) => x * 2,
+  inc = (y) => y + 1
+
+function formatMoney(amount, currency) {
+  currency = currency || "UAH"
+  return (
+    amount.toFixed(2) + " " + currency
+  )
+}
+
+function buildLine(label, value, unit) {
+  unit = unit ?? ""
+
+  return `${label}: ${value} ${unit}`.trim()
+}
+
+function countFreeSeats(
+  event,
+  soldSeats,
+) {
+  let free = 0
+  for (
+    let seat = 0;
+    seat <= event.capacity;
+    seat++
+  ) {
+    if (!soldSeats.includes(seat))
+      free++
+  }
+  return free
+}
+
+function createOrder(
+  id,
+  buyerName,
+  eventId,
+  seats,
+  type,
+) {
+  buyerName = buyerName
+  const event = findEvent(eventId)
+  if (!event) {
+    throw new Error(
+      "No event " + eventId,
+    )
+  }
+  if (seats.length === 0) {
+  }
+  let total_price = 0
+  const tickets = []
+  for (const seat of seats) {
+    const t = createTicket(
+      eventId,
+      seat,
+      buyerName,
+      applyDiscount(
+        event.basePrice,
+        type,
+      ),
+    )
+    tickets.push(t)
+    total_price += t.price
+  }
+  return {
+    id: id,
+    buyer: buyerName,
+    tickets: tickets,
+    total: total_price,
+    status: "new",
+  }
+}
+
+function closeOrder(status) {
+  if ((status = "done")) {
+    return "closed"
+  }
+  return "open"
+}
+
+function validateOrder(order) {
+  if (order) {
+    for (const t of order.tickets) {
+      if (t.price > 0) {
+        if (t.seat) {
+          return true
+        }
+      }
+    }
+  }
+  return false
+}
+
+function countByCity(list) {
+  const stats = {}
+  for (const ev of list) {
+    stats[ev.city] =
+      (stats[ev.city] || 0) + 1
+  }
+  return stats
+}
+
+function printStats(stats) {
+  for (const city in stats) {
+    console.log(
+      "  " + city + ": " + stats[city],
+    )
+  }
+}
+
+function checkPrice(price) {
+  if (price === NaN) {
+    return "bad price"
+  }
+  return price > 0 ? "ok" : "bad price"
+}
+
+function label(ev) {
+  if (!!ev.active) {
+    return "on sale"
+  }
+  return "closed"
+}
+
+function canSell(event, order) {
+  const sellable =
+    event.active
+    && order.tickets.length > 0
+    && order.tickets.length
+      <= limits.maxPerOrder
+    && event.capacity
+      > order.tickets.length
+  return sellable
+}
+
+function describeOrder(
+  id,
+  buyer,
+  title,
+  count,
+  total,
+) {
+  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`
+}
+
+function oldCalc(x) {
+  return x * 2
+}
+
+function brokenReport() {
+  return totl + 1
+  console.log("never printed")
+}
+
+const reporter = {
+  print: function (msg) {
+    console.log(msg)
+  },
+  width: 30,
+}
+
+// ---- main part ----
+reporter.print(
+  "=== Concert agency report ===",
+)
+console.log(greeting + " " + motto)
+let seatA = 1
+let seatB = 2
+console.log(seatA + seatB)
+console.log(
+  "Point sum: "
+    + (point.x + point.y)
+    + ", box owner: "
+    + ticketBox.owner,
+)
+console.log(
+  "Tiny: "
+    + (tiny.a + tiny2.b)
+    + ", limit: "
+    + limits["max-items"],
+)
+console.log(
+  "Mode: "
+    + config.mode
+    + ", double 4 = "
+    + double(4)
+    + ", inc 4 = "
+    + inc(4),
+)
+
+const active = getActiveEvents()
+reporter.print(
+  "Active events: " + active.length,
+)
+reporter.print(
+  "Titles: "
+    + events
+      .map(function (e) {
+        return e.title
+      })
+      .join(", "),
+)
+reporter.print(
+  "Big events: "
+    + events
+      .filter(isBigEvent)
+      .map(getTitle)
+      .join(", "),
+)
+
+let type = process.argv[2]
+type = type || "vip"
+
+const orders = [
+  createOrder(
+    101,
+    "Olena",
+    1,
+    [1, 2, 3],
+    "student",
+  ),
+  createOrder(
+    102,
+    "Taras",
+    4,
+    [10, 11],
+    type,
+  ),
+  createOrder(
+    103,
+    "Ira",
+    7,
+    [5],
+    "kids",
+  ),
+]
+
+for (const order of orders) {
+  const ticket_count =
+    order.tickets.length
+  console.log(
+    describeOrder(
+      order.id,
+      order.buyer,
+      findEvent(
+        order.tickets[0].eventId,
+      ).title,
+      ticket_count,
+      formatMoney(order.total),
+    ),
+  )
+}
+
+const revenue = orders.reduce(
+  (sum, o) => sum + o.total,
+  0,
+)
+console.log(
+  buildLine(
+    "Revenue",
+    formatMoney(revenue),
+  ),
+)
+console.log(
+  "Valid orders: "
+    + orders.filter(validateOrder)
+      .length,
+)
+console.log(
+  "Free seats, event 1: "
+    + countFreeSeats(
+      events[0],
+      [1, 2, 3],
+    ),
+)
+console.log(
+  "Close 'new' order: "
+    + closeOrder("new"),
+)
+console.log(
+  "Price check: "
+    + checkPrice(100)
+    + ", label: "
+    + label(events[2]),
+)
+console.log(
+  "Can sell: "
+    + canSell(events[0], orders[0]),
+)
+console.log("Events per city:")
+printStats(countByCity(events))
+for (const city in countByCity(
+  events,
+)) {
+  console.log("city key: " + city)
+}
+
+const count = orders.length
+if (count > 0)
+  console.log("Orders total: " + count)
+[exit code: 0]
+
+===== 3.6 git restore .prettierrc.json =====
+$ git restore .prettierrc.json
+
+[exit code: 0]
+
+===== 3.7 eslint . -o reports/eslint-after-format.txt =====
+$ npx eslint . -o reports/eslint-after-format.txt
+
+[exit code: 1]
+
+----- eslint-after-format.txt -----
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+   80:12  warning  Expected property shorthand                                                                                 object-shorthand
+   80:30  warning  Expected property shorthand                                                                                 object-shorthand
+   80:42  warning  Expected property shorthand                                                                                 object-shorthand
+   80:56  warning  Expected property shorthand                                                                                 object-shorthand
+   84:22  error    Unexpected function expression                                                                              prefer-arrow-callback
+   90:24  error    Unexpected function expression                                                                              prefer-arrow-callback
+  104:5   error    Duplicate case label                                                                                        no-duplicate-case
+  117:3   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  122:3   warning  Assignment (=) can be replaced with operator assignment (??=)                                               logical-assignment-operators
+  136:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error    Empty block statement                                                                                       no-empty
+  143:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  156:5   warning  Expected property shorthand                                                                                 object-shorthand
+  158:5   warning  Expected property shorthand                                                                                 object-shorthand
+  159:12  error    Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error    Unexpected constant condition                                                                               no-constant-condition
+  165:8   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  175:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  193:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  206:7   error    Redundant double negation                                                                                   no-extra-boolean-cast
+  225:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error    'totl' is not defined                                                                                       no-undef
+  231:3   error    Unreachable code                                                                                            no-unreachable
+  235:3   warning  Expected method shorthand                                                                                   object-shorthand
+  256:12  error    Unexpected function expression                                                                              prefer-arrow-callback
+  264:1   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  273:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 33 problems (22 errors, 11 warnings)
+  4 errors and 10 warnings potentially fixable with the `--fix` option.
+
+
+===== 3.7 eslint . --quiet =====
+$ npx eslint . --quiet
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error  Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error  'unusedTax' is assigned a value but never used                                                              no-unused-vars
+   84:22  error  Unexpected function expression                                                                              prefer-arrow-callback
+   90:24  error  Unexpected function expression                                                                              prefer-arrow-callback
+  104:5   error  Duplicate case label                                                                                        no-duplicate-case
+  136:15  error  'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error  Empty block statement                                                                                       no-empty
+  143:7   error  Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error  Identifier 'total_price' is not in camel case                                                               camelcase
+  159:12  error  Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error  Unexpected constant condition                                                                               no-constant-condition
+  165:8   error  'status' is assigned a value but never used                                                                 no-unused-vars
+  193:3   error  The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error  Use the isNaN function to compare with NaN                                                                  use-isnan
+  206:7   error  Redundant double negation                                                                                   no-extra-boolean-cast
+  225:10  error  'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error  'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error  'totl' is not defined                                                                                       no-undef
+  231:3   error  Unreachable code                                                                                            no-unreachable
+  256:12  error  Unexpected function expression                                                                              prefer-arrow-callback
+  273:9   error  Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error  The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 22 problems (22 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
+[exit code: 1]
+
+===== 3.7 eslint . --max-warnings 0 =====
+$ npx eslint . --max-warnings 0
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+   80:12  warning  Expected property shorthand                                                                                 object-shorthand
+   80:30  warning  Expected property shorthand                                                                                 object-shorthand
+   80:42  warning  Expected property shorthand                                                                                 object-shorthand
+   80:56  warning  Expected property shorthand                                                                                 object-shorthand
+   84:22  error    Unexpected function expression                                                                              prefer-arrow-callback
+   90:24  error    Unexpected function expression                                                                              prefer-arrow-callback
+  104:5   error    Duplicate case label                                                                                        no-duplicate-case
+  117:3   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  122:3   warning  Assignment (=) can be replaced with operator assignment (??=)                                               logical-assignment-operators
+  136:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error    Empty block statement                                                                                       no-empty
+  143:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  156:5   warning  Expected property shorthand                                                                                 object-shorthand
+  158:5   warning  Expected property shorthand                                                                                 object-shorthand
+  159:12  error    Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error    Unexpected constant condition                                                                               no-constant-condition
+  165:8   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  175:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  193:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  206:7   error    Redundant double negation                                                                                   no-extra-boolean-cast
+  225:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error    'totl' is not defined                                                                                       no-undef
+  231:3   error    Unreachable code                                                                                            no-unreachable
+  235:3   warning  Expected method shorthand                                                                                   object-shorthand
+  256:12  error    Unexpected function expression                                                                              prefer-arrow-callback
+  264:1   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  273:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 33 problems (22 errors, 11 warnings)
+  4 errors and 10 warnings potentially fixable with the `--fix` option.
+[exit code: 1]
+
+===== 3.8 eslint . --fix =====
+$ npx eslint . --fix
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+  104:5   error    Duplicate case label                                                                                        no-duplicate-case
+  136:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error    Empty block statement                                                                                       no-empty
+  143:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  159:12  error    Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error    Unexpected constant condition                                                                               no-constant-condition
+  165:8   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  175:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  193:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  225:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error    'totl' is not defined                                                                                       no-undef
+  231:3   error    Unreachable code                                                                                            no-unreachable
+  273:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 19 problems (18 errors, 1 warning)
+[exit code: 1]
+
+===== 3.8 git diff src/app.js (авто-виправлення ESLint) =====
+$ git diff src/app.js
+diff --git a/src/app.js b/src/app.js
+index 1a4369e..21aed04 100644
+--- a/src/app.js
++++ b/src/app.js
+@@ -77,17 +77,17 @@ const events = [
+ ];
+ 
+ function createTicket(eventId, seat, buyer, price) {
+-  return { eventId: eventId, seat: seat, buyer: buyer, price: price };
++  return { eventId, seat, buyer, price };
+ }
+ 
+ function findEvent(id) {
+-  return events.find(function (e) {
++  return events.find((e) => {
+     return e.id === id;
+   });
+ }
+ 
+ function getActiveEvents() {
+-  return events.filter(function (e) {
++  return events.filter((e) => {
+     return e.active;
+   });
+ }
+@@ -114,12 +114,12 @@ const double = (x) => x * 2,
+   inc = (y) => y + 1;
+ 
+ function formatMoney(amount, currency) {
+-  currency = currency || "UAH";
++  currency ||= "UAH";
+   return amount.toFixed(2) + " " + currency;
+ }
+ 
+ function buildLine(label, value, unit) {
+-  unit = unit ?? "";
++  unit ??= "";
+ 
+   return `${label}: ${value} ${unit}`.trim();
+ }
+@@ -153,9 +153,9 @@ function createOrder(id, buyerName, eventId, seats, type) {
+     total_price += t.price;
+   }
+   return {
+-    id: id,
++    id,
+     buyer: buyerName,
+-    tickets: tickets,
++    tickets,
+     total: total_price,
+     status: "new",
+   };
+@@ -203,7 +203,7 @@ function checkPrice(price) {
+ }
+ 
+ function label(ev) {
+-  if (!!ev.active) {
++  if (ev.active) {
+     return "on sale";
+   }
+   return "closed";
+@@ -232,7 +232,7 @@ function brokenReport() {
+ }
+ 
+ const reporter = {
+-  print: function (msg) {
++  print (msg) {
+     console.log(msg);
+   },
+   width: 30,
+@@ -253,7 +253,7 @@ reporter.print("Active events: " + active.length);
+ reporter.print(
+   "Titles: "
+     + events
+-      .map(function (e) {
++      .map((e) => {
+         return e.title;
+       })
+       .join(", "),
+@@ -261,7 +261,7 @@ reporter.print(
+ reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "));
+ 
+ let type = process.argv[2];
+-type = type || "vip";
++type ||= "vip";
+ 
+ const orders = [
+   createOrder(101, "Olena", 1, [1, 2, 3], "student"),
+[exit code: 0]
+
+===== 3.8 eslint . -o reports/eslint-after-fix.txt =====
+$ npx eslint . -o reports/eslint-after-fix.txt
+
+[exit code: 1]
+
+----- eslint-after-fix.txt -----
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+  104:5   error    Duplicate case label                                                                                        no-duplicate-case
+  136:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error    Empty block statement                                                                                       no-empty
+  143:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  159:12  error    Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error    Unexpected constant condition                                                                               no-constant-condition
+  165:8   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  175:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  193:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  225:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error    'totl' is not defined                                                                                       no-undef
+  231:3   error    Unreachable code                                                                                            no-unreachable
+  273:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 19 problems (18 errors, 1 warning)
+
+
+===== 3.8 prettier --check . (після --fix) =====
+$ npx prettier --check .
+Checking formatting...
+[[33mwarn[39m] src/app.js
+[[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
+[exit code: 1]
+
+===== 3.8 npm run format (ESLint --fix порушив форматування) =====
+$ npm run format
+
+> lab04-terebniov-ict326bd@1.0.0 format
+> prettier --write .
+
+[90m.prettierrc.json[39m 23ms (unchanged)
+[90mDEFECTS.md[39m 79ms (unchanged)
+[90meslint.config.js[39m 11ms (unchanged)
+[90mpackage.json[39m 2ms (unchanged)
+src/app.js 62ms
+[exit code: 0]
+
+[ПІСЛЯ --fix prettier --check скаржився: виконано npm run format]
+
+===== prettier --write DEFECTS.md =====
+$ npx prettier --write DEFECTS.md
+DEFECTS.md 83ms
+[exit code: 0]
+
+===== git add =====
+$ git add .
+
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+M  DEFECTS.md
+A  reports/eslint-after-fix.txt
+A  reports/eslint-after-format.txt
+M  src/app.js
+[exit code: 0]
+
+===== git commit =====
+$ git commit -m "Apply ESLint autofixes"
+[main bc98db2] Apply ESLint autofixes
+ 4 files changed, 113 insertions(+), 58 deletions(-)
+ create mode 100644 reports/eslint-after-fix.txt
+ create mode 100644 reports/eslint-after-format.txt
+[exit code: 0]
+
+===== 3.9 prettier --write src/app.js (форматування ручного виправлення) =====
+$ npx prettier --write src/app.js
+src/app.js 92ms
+[exit code: 0]
+
+===== 3.9 npm run lint =====
+$ npm run lint
+
+> lab04-terebniov-ict326bd@1.0.0 lint
+> eslint .
+[exit code: 0]
+
+===== 3.9 node src/app.js =====
+$ node src/app.js
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1620.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3975.00 UAH
+Valid orders: 3
+Free seats, event 1: 117
+Close 'new' order: open
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+[exit code: 0]
+
+===== 3.10 eslint src/app.js (curly додано, prettier-конфіг останній) =====
+$ npx eslint src/app.js
+
+[exit code: 0]
+
+===== 3.10 eslint src/app.js (eslintConfigPrettier після recommended) =====
+$ npx eslint src/app.js
+
+/home/runner/work/_temp/proj/src/app.js
+  124:36  error  Expected { after 'if' condition  curly
+  264:16  error  Expected { after 'if' condition  curly
+
+✖ 2 problems (2 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+[exit code: 1]
+
+===== 3.10 git restore eslint.config.js =====
+$ git restore eslint.config.js
+
+[exit code: 0]
+
+===== 3.11 prettier --check legacy/old-report.js =====
+$ npx prettier --check legacy/old-report.js
+Checking formatting...
+All matched files use Prettier code style!
+[exit code: 0]
+
+===== 3.11 eslint legacy/old-report.js =====
+$ npx eslint legacy/old-report.js
+
+/home/runner/work/_temp/proj/legacy/old-report.js
+  0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to disable file ignore settings or use "--no-warn-ignored" to suppress this warning
+
+✖ 1 problem (0 errors, 1 warning)
+[exit code: 0]
+
+===== 3.12 npm run check =====
+$ npm run check
+
+> lab04-terebniov-ict326bd@1.0.0 check
+> prettier --check . && eslint . --max-warnings 0
+
+Checking formatting...
+All matched files use Prettier code style!
+[exit code: 0]
+
+===== 3.12 node src/app.js =====
+$ node src/app.js
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1620.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3975.00 UAH
+Valid orders: 3
+Free seats, event 1: 117
+Close 'new' order: open
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+[exit code: 0]
+
+----- output-before.txt -----
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1440.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3795.00 UAH
+Valid orders: 3
+Free seats, event 1: 118
+Close 'new' order: closed
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+
+----- output-after.txt -----
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1620.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3975.00 UAH
+Valid orders: 3
+Free seats, event 1: 117
+Close 'new' order: open
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
+
+
+===== final src/app.js =====
+// Concert agency: events, tickets and orders
+const limits = { "max-items": 6, "minAge": 16, "maxPerOrder": 8, "currency": "UAH" };
+const config = { mode: "prod", retries: 2 };
+const greeting = "I'm here";
+const motto = "Live music";
+const point = { x: 1, y: 2 };
+const ticketBox = { event: 1, seats: [1, 2], owner: "Ira" };
+const tiny = { a: 1 };
+const tiny2 = { b: 2 };
+
+const events = [
+  {
+    id: 1,
+    title: "Rock Night",
+    city: "Kyiv",
+    basePrice: 800,
+    capacity: 120,
+    active: true,
+  },
+  {
+    id: 2,
+    title: "Jazz Evening",
+    city: "Lviv",
+    basePrice: 650,
+    capacity: 80,
+    active: true,
+  },
+  {
+    id: 3,
+    title: "Pop Festival",
+    city: "Odesa",
+    basePrice: 1200,
+    capacity: 300,
+    active: false,
+  },
+  {
+    id: 4,
+    title: "Classic Hall",
+    city: "Kyiv",
+    basePrice: 900,
+    capacity: 150,
+    active: true,
+  },
+  {
+    id: 5,
+    title: "Indie Open Air",
+    city: "Kharkiv",
+    basePrice: 500,
+    capacity: 200,
+    active: true,
+  },
+  {
+    id: 6,
+    title: "Electro Wave",
+    city: "Dnipro",
+    basePrice: 700,
+    capacity: 100,
+    active: false,
+  },
+  {
+    id: 7,
+    title: "Folk Fest",
+    city: "Lviv",
+    basePrice: 450,
+    capacity: 250,
+    active: true,
+  },
+  {
+    id: 8,
+    title: "Metal Storm",
+    city: "Kyiv",
+    basePrice: 1000,
+    capacity: 180,
+    active: true,
+  },
+];
+
+function createTicket(eventId, seat, buyer, price) {
+  return { eventId, seat, buyer, price };
+}
+
+function findEvent(id) {
+  return events.find((e) => e.id === id);
+}
+
+function getActiveEvents() {
+  return events.filter((e) => e.active);
+}
+
+// discounts: student 15%, vip 10%, kids 30%
+const calcDiscount = (type) => {
+  switch (type) {
+    case "student":
+      return 0.15;
+    case "vip":
+      return 0.1;
+    case "kids":
+      return 0.3;
+    case "senior":
+      return 0.5;
+    default:
+      return 0;
+  }
+};
+const applyDiscount = (price, type) => price * (1 - calcDiscount(type));
+const isBigEvent = (event) => event.capacity >= 200;
+const getTitle = (e) => e.title;
+const double = (x) => x * 2;
+const inc = (y) => y + 1;
+
+function formatMoney(amount, currency) {
+  currency ||= "UAH";
+  return `${amount.toFixed(2)} ${currency}`;
+}
+
+function buildLine(label, value, unit) {
+  unit ??= "";
+  return `${label}: ${value} ${unit}`.trim();
+}
+
+function countFreeSeats(event, soldSeats) {
+  let free = 0;
+  for (let seat = 0; seat < event.capacity; seat++) {
+    if (!soldSeats.includes(seat)) free++;
+  }
+  return free;
+}
+
+function createOrder(id, buyerName, eventId, seats, type) {
+  const event = findEvent(eventId);
+  if (!event) {
+    throw new Error(`No event ${eventId}`);
+  }
+  if (seats.length === 0) {
+    throw new Error("No seats selected");
+  }
+  let totalPrice = 0;
+  const tickets = [];
+  for (const seat of seats) {
+    const ticket = createTicket(
+      eventId,
+      seat,
+      buyerName,
+      applyDiscount(event.basePrice, type),
+    );
+    tickets.push(ticket);
+    totalPrice += ticket.price;
+  }
+  return { id, buyer: buyerName, tickets, total: totalPrice, status: "new" };
+}
+
+function closeOrder(status) {
+  if (status === "done") {
+    return "closed";
+  }
+  return "open";
+}
+
+function validateOrder(order) {
+  if (!order) {
+    return false;
+  }
+  return order.tickets.some((t) => t.price > 0 && Boolean(t.seat));
+}
+
+function countByCity(list) {
+  const stats = {};
+  for (const ev of list) {
+    stats[ev.city] = (stats[ev.city] || 0) + 1;
+  }
+  return stats;
+}
+
+function printStats(stats) {
+  for (const city in stats) {
+    if (Object.hasOwn(stats, city)) {
+      console.log("  " + city + ": " + stats[city]);
+    }
+  }
+}
+
+function checkPrice(price) {
+  if (Number.isNaN(price)) {
+    return "bad price";
+  }
+  return price > 0 ? "ok" : "bad price";
+}
+
+function label(ev) {
+  if (ev.active) {
+    return "on sale";
+  }
+  return "closed";
+}
+
+function canSell(event, order) {
+  const sellable =
+    event.active
+    && order.tickets.length > 0
+    && order.tickets.length <= limits.maxPerOrder
+    && event.capacity > order.tickets.length;
+  return sellable;
+}
+
+function describeOrder(id, buyer, title, count, total) {
+  return `Order #${id}: ${buyer} bought ${count} ticket(s) for "${title}", total ${total}`;
+}
+
+const reporter = {
+  print(msg) {
+    console.log(msg);
+  },
+  width: 30,
+};
+
+// ---- main part ----
+reporter.print("=== Concert agency report ===");
+console.log(greeting + " " + motto);
+const seatA = 1;
+const seatB = 2;
+console.log(seatA + seatB);
+console.log("Point sum: " + (point.x + point.y) + ", box owner: " + ticketBox.owner);
+console.log("Tiny: " + (tiny.a + tiny2.b) + ", limit: " + limits["max-items"]);
+console.log("Mode: " + config.mode + ", double 4 = " + double(4) + ", inc 4 = " + inc(4));
+
+const active = getActiveEvents();
+reporter.print("Active events: " + active.length);
+reporter.print("Titles: " + events.map((e) => e.title).join(", "));
+reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "));
+
+const type = process.argv[2] || "vip";
+
+const orders = [
+  createOrder(101, "Olena", 1, [1, 2, 3], "student"),
+  createOrder(102, "Taras", 4, [10, 11], type),
+  createOrder(103, "Ira", 7, [5], "kids"),
+];
+
+for (const order of orders) {
+  const ticketCount = order.tickets.length;
+  const title = findEvent(order.tickets[0].eventId).title;
+  console.log(
+    describeOrder(order.id, order.buyer, title, ticketCount, formatMoney(order.total)),
+  );
+}
+
+const revenue = orders.reduce((sum, o) => sum + o.total, 0);
+console.log(buildLine("Revenue", formatMoney(revenue)));
+console.log("Valid orders: " + orders.filter(validateOrder).length);
+console.log("Free seats, event 1: " + countFreeSeats(events[0], [1, 2, 3]));
+console.log("Close 'new' order: " + closeOrder("new"));
+console.log("Price check: " + checkPrice(100) + ", label: " + label(events[2]));
+console.log("Can sell: " + canSell(events[0], orders[0]));
+console.log("Events per city:");
+const cityStats = countByCity(events);
+printStats(cityStats);
+for (const city in cityStats) {
+  if (Object.hasOwn(cityStats, city)) {
+    console.log("city key: " + city);
+  }
+}
+
+const count = orders.length;
+if (count > 0) console.log("Orders total: " + count);
+
+
+===== final DEFECTS.md =====
+# Карта дефектів
+
+Номери рядків — у вихідному файлі src/app.js (коміт Add initial code with defects).
+
+| №   | Рядок              | Група | Опис дефекту                                                                                | Прогноз                                            | Виявлено                              | Виправлено   |
+| --- | ------------------ | ----- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------- | ------------ |
+| 1   | 16–23              | Ф1    | змішані відступи: 1, 3, 8 пробілів і табуляція                                              | Prettier, tabWidth, useTabs                        | Prettier (prettier --check)           | Prettier     |
+| 2   | 55, 58, 164        | Ф2    | неоднакові пробіли навколо операторів і ком: price*(1 - …), (price,type), y+ 1              | Prettier, базове форматування                      | Prettier (prettier --check)           | Prettier     |
+| 3   | 2, 5, 6            | Ф3    | лапки впереміш, є апостроф: "I'm here", 'Live music'                                        | Prettier, singleQuote                              | Prettier (prettier --check)           | Prettier     |
+| 4   | 3, 11              | Ф4    | частина інструкцій без ;                                                                    | Prettier, semi                                     | Prettier (prettier --check)           | Prettier     |
+| 5   | 186                | Ф5    | виклик з 5 аргументами в одному рядку довжиною 134 символи                                  | Prettier, printWidth                               | Prettier (prettier --check)           | Prettier     |
+| 6   | 13, 165            | Ф6    | кілька інструкцій в одному рядку                                                            | Prettier, базове форматування                      | Prettier (prettier --check)           | Prettier     |
+| 7   | 7–10, 11–12        | Ф7    | короткий об’єкт у кілька рядків і об’єкт із частковим перенесенням                          | Prettier, objectWrap                               | Prettier (prettier --check)           | Prettier     |
+| 8   | 9, 23              | Ф8    | завершальна кома після останнього елемента є / немає                                        | Prettier, trailingComma                            | Prettier (prettier --check)           | Prettier     |
+| 9   | 13                 | Ф9    | об’єкти {a: 1} і { b: 2 }: пробіли в дужках по-різному                                      | Prettier, bracketSpacing                           | Prettier (prettier --check)           | Prettier     |
+| 10  | 56–58              | Ф10   | стрілкові функції з одним параметром у дужках і без                                         | Prettier, arrowParens                              | Prettier (prettier --check)           | Prettier     |
+| 11  | 2                  | Ф11   | ключ 'max-items' потребує лапок, інші ключі то з лапками, то без                            | Prettier, quoteProps                               | Prettier (prettier --check)           | Prettier     |
+| 12  | 137–139            | Ф12   | довгий логічний вираз із 4 умов, довільно перенесений вручну                                | Prettier, printWidth, experimentalOperatorPosition | Prettier (prettier --check)           | Prettier     |
+| 13  | 37–39, 67, 155, 31 | Ф13   | 3+ порожні рядки поспіль, пробіли в кінці рядків, } в одному рядку з кодом                  | Prettier, базове форматування                      | Prettier (prettier --check)           | Prettier     |
+| 14  | 4                  | К     | змінна unusedTax оголошена, але не використана                                              | ESLint, no-unused-vars                             | ESLint (no-unused-vars)               | вручну       |
+| 15  | 147                | К     | функція oldCalc оголошена, але не викликається                                              | ESLint, no-unused-vars                             | ESLint (no-unused-vars)               | вручну       |
+| 16  | 150                | К     | звернення до неоголошеної змінної totl (функція не викликається)                            | ESLint, no-undef                                   | ESLint (no-undef)                     | вручну       |
+| 17  | 95                 | К     | присвоєння в умові: if (status = "done")                                                    | ESLint, no-cond-assign                             | ESLint (no-cond-assign)               | вручну       |
+| 18  | 151                | К     | код після return                                                                            | ESLint, no-unreachable                             | ESLint (no-unreachable)               | вручну       |
+| 19  | 3                  | К     | однакові ключі mode в об’єкті config                                                        | ESLint, no-dupe-keys                               | ESLint (no-dupe-keys)                 | вручну       |
+| 20  | 49                 | К     | однаковий case "student" у switch                                                           | ESLint, no-duplicate-case                          | ESLint (no-duplicate-case)            | вручну       |
+| 21  | 80                 | К     | присвоєння параметра самому собі: buyerName = buyerName                                     | ESLint, no-self-assign                             | ESLint (no-self-assign)               | вручну       |
+| 22  | 83                 | К     | порожній блок if (seats.length === 0) {}                                                    | ESLint, no-empty                                   | ESLint (no-empty)                     | вручну       |
+| 23  | 127                | К     | порівняння з NaN: price === NaN                                                             | ESLint, use-isnan                                  | ESLint (use-isnan)                    | вручну       |
+| 24  | 132                | К     | зайве перетворення на boolean: if (!!ev.active)                                             | ESLint, no-extra-boolean-cast                      | ESLint (no-extra-boolean-cast)        | ESLint --fix |
+| 25  | 27                 | В     | { eventId: eventId, … } у createTicket: не використано скорочений запис                     | ESLint, object-shorthand                           | ESLint (object-shorthand)             | ESLint --fix |
+| 26  | 91                 | В     | { id: id, buyer: …, tickets: tickets } у createOrder: не використано скорочений запис       | ESLint, object-shorthand                           | ESLint (object-shorthand)             | ESLint --fix |
+| 27  | 158                | В     | метод print: function () у reporter: не використано скорочений запис                        | ESLint, object-shorthand                           | ESLint (object-shorthand)             | ESLint --fix |
+| 28  | 31                 | В     | колбек find записано як function                                                            | ESLint, prefer-arrow-callback                      | ESLint (prefer-arrow-callback)        | ESLint --fix |
+| 29  | 35                 | В     | колбек filter записано як function                                                          | ESLint, prefer-arrow-callback                      | ESLint (prefer-arrow-callback)        | ESLint --fix |
+| 30  | 172                | В     | колбек map записано як function                                                             | ESLint, prefer-arrow-callback                      | ESLint (prefer-arrow-callback)        | ESLint --fix |
+| 31  | 61                 | В     | currency = currency                                                                         |                                                    | не виявлено                           | —            |     |     |
+| 32  | 66                 | В     | unit = unit ?? ""                                                                           | ESLint, logical-assignment-operators               | ESLint (logical-assignment-operators) | ESLint --fix |
+| 33  | 176                | В     | type = type                                                                                 |                                                    | не виявлено                           | —            |     |     |
+| 34  | 121                | В     | for...in без перевірки власних властивостей (printStats)                                    | ESLint, guard-for-in                               | ESLint (guard-for-in)                 | вручну       |
+| 35  | 198                | В     | for...in без перевірки власних властивостей (основна частина)                               | ESLint, guard-for-in                               | ESLint (guard-for-in)                 | вручну       |
+| 36  | 103                | В     | вкладеність блоків 4 рівні у validateOrder                                                  | ESLint, max-depth                                  | ESLint (max-depth)                    | вручну       |
+| 37  | 84                 | В     | змінна total_price у snake_case                                                             | ESLint, camelcase                                  | ESLint (camelcase)                    | вручну       |
+| 38  | 185                | В     | змінна ticket_count у snake_case                                                            | ESLint, camelcase                                  | ESLint (camelcase)                    | вручну       |
+| 39  | 46                 | Л     | знижка vip 0.2 замість 0.1 (замовлення 102: має бути 1620.00 UAH, а виводиться 1440.00 UAH) | жоден                                              | ні (жоден інструмент)                 | вручну       |
+| 40  | 73                 | Л     | умова seat <= event.capacity замість < (вільних місць має бути 117, а виводиться 118)       | жоден                                              | ні (жоден інструмент)                 | вручну       |
+
+
+===== final package.json =====
+{
+  "name": "lab04-terebniov-ict326bd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check": "prettier --check . && eslint . --max-warnings 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "17.13.0",
+    "prettier": "3.9.9"
+  }
+}
+
+
+===== final eslint.config.js =====
+import js from "@eslint/js";
+import globals from "globals";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
+
+export default [
+  { ignores: ["node_modules/**", "legacy/**", "reports/**"] },
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: { ...globals.node },
+    },
+    rules: {
+      "object-shorthand": ["warn", "always"],
+      "prefer-arrow-callback": "error",
+      "logical-assignment-operators": ["warn", "always"],
+      "guard-for-in": "error",
+      "max-depth": ["warn", 3],
+      "camelcase": "error",
+    },
+  },
+  eslintConfigPrettier,
+];
+
+
+===== final .prettierrc.json =====
+{
+  "printWidth": 90,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "quoteProps": "consistent",
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "objectWrap": "collapse",
+  "experimentalOperatorPosition": "start",
+  "endOfLine": "lf"
+}
+
+
+===== prettier --write DEFECTS.md =====
+$ npx prettier --write DEFECTS.md
+DEFECTS.md 91ms
+[exit code: 0]
+
+===== npm run check (повторно після DEFECTS.md) =====
+$ npm run check
+
+> lab04-terebniov-ict326bd@1.0.0 check
+> prettier --check . && eslint . --max-warnings 0
+
+Checking formatting...
+All matched files use Prettier code style!
+[exit code: 0]
+
+===== git add =====
+$ git add .
+
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+A  reports/output-after.txt
+M  src/app.js
+[exit code: 0]
+
+===== git commit =====
+$ git commit -m "Fix remaining problems manually"
+[main 895bee8] Fix remaining problems manually
+ 2 files changed, 67 insertions(+), 66 deletions(-)
+ create mode 100644 reports/output-after.txt
+[exit code: 0]
+
+===== git log --oneline =====
+$ git log --oneline
+895bee8 Fix remaining problems manually
+bc98db2 Apply ESLint autofixes
+b83f8f1 Format code with Prettier
+9972907 Add initial code with defects
+bcd140a Configure Prettier and ESLint
+[exit code: 0]
+
+===== git show --stat HEAD~2 =====
+$ git show --stat HEAD~2
+commit b83f8f155a5e1134071d73dba7350a0e7b146284
+Author: Alex134619 <alex134619@users.noreply.github.com>
+Date:   Fri Oct 16 06:43:16 2026 +0000
+
+    Format code with Prettier
+
+ DEFECTS.md                |  84 ++++++-------
+ eslint.config.js          |  30 ++---
+ reports/eslint-before.txt |  39 ++++++
+ reports/output-before.txt |  30 +++++
+ src/app.js                | 300 ++++++++++++++++++++++++++++++----------------
+ 5 files changed, 323 insertions(+), 160 deletions(-)
+[exit code: 0]
+
+===== git show --stat HEAD~1 =====
+$ git show --stat HEAD~1
+commit bc98db249a0f1f87b51b72482ee486066e14197f
+Author: Alex134619 <alex134619@users.noreply.github.com>
+Date:   Fri Oct 16 06:43:21 2026 +0000
+
+    Apply ESLint autofixes
+
+ DEFECTS.md                      | 84 ++++++++++++++++++++---------------------
+ reports/eslint-after-fix.txt    | 23 +++++++++++
+ reports/eslint-after-format.txt | 38 +++++++++++++++++++
+ src/app.js                      | 26 +++++--------
+ 4 files changed, 113 insertions(+), 58 deletions(-)
+[exit code: 0]
+
+===== git status =====
+$ git status --short
+
+[exit code: 0]
