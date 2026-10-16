@@ -77,17 +77,17 @@ const events = [
 ];
 
 function createTicket(eventId, seat, buyer, price) {
-  return { eventId: eventId, seat: seat, buyer: buyer, price: price };
+  return { eventId, seat, buyer, price };
 }
 
 function findEvent(id) {
-  return events.find(function (e) {
+  return events.find((e) => {
     return e.id === id;
   });
 }
 
 function getActiveEvents() {
-  return events.filter(function (e) {
+  return events.filter((e) => {
     return e.active;
   });
 }
@@ -114,12 +114,12 @@ const double = (x) => x * 2,
   inc = (y) => y + 1;
 
 function formatMoney(amount, currency) {
-  currency = currency || "UAH";
+  currency ||= "UAH";
   return amount.toFixed(2) + " " + currency;
 }
 
 function buildLine(label, value, unit) {
-  unit = unit ?? "";
+  unit ??= "";
 
   return `${label}: ${value} ${unit}`.trim();
 }
@@ -152,13 +152,7 @@ function createOrder(id, buyerName, eventId, seats, type) {
     tickets.push(t);
     total_price += t.price;
   }
-  return {
-    id: id,
-    buyer: buyerName,
-    tickets: tickets,
-    total: total_price,
-    status: "new",
-  };
+  return { id, buyer: buyerName, tickets, total: total_price, status: "new" };
 }
 
 function closeOrder(status) {
@@ -203,7 +197,7 @@ function checkPrice(price) {
 }
 
 function label(ev) {
-  if (!!ev.active) {
+  if (ev.active) {
     return "on sale";
   }
   return "closed";
@@ -232,7 +226,7 @@ function brokenReport() {
 }
 
 const reporter = {
-  print: function (msg) {
+  print(msg) {
     console.log(msg);
   },
   width: 30,
@@ -253,7 +247,7 @@ reporter.print("Active events: " + active.length);
 reporter.print(
   "Titles: "
     + events
-      .map(function (e) {
+      .map((e) => {
         return e.title;
       })
       .join(", "),
@@ -261,7 +255,7 @@ reporter.print(
 reporter.print("Big events: " + events.filter(isBigEvent).map(getTitle).join(", "));
 
 let type = process.argv[2];
-type = type || "vip";
+type ||= "vip";
 
 const orders = [
   createOrder(101, "Olena", 1, [1, 2, 3], "student"),

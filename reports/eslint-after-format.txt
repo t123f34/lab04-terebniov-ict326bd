@@ -1,0 +1,38 @@
+
+/home/runner/work/_temp/proj/src/app.js
+    3:44  error    Duplicate key 'mode'                                                                                        no-dupe-keys
+    4:7   error    'unusedTax' is assigned a value but never used                                                              no-unused-vars
+   80:12  warning  Expected property shorthand                                                                                 object-shorthand
+   80:30  warning  Expected property shorthand                                                                                 object-shorthand
+   80:42  warning  Expected property shorthand                                                                                 object-shorthand
+   80:56  warning  Expected property shorthand                                                                                 object-shorthand
+   84:22  error    Unexpected function expression                                                                              prefer-arrow-callback
+   90:24  error    Unexpected function expression                                                                              prefer-arrow-callback
+  104:5   error    Duplicate case label                                                                                        no-duplicate-case
+  117:3   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  122:3   warning  Assignment (=) can be replaced with operator assignment (??=)                                               logical-assignment-operators
+  136:15  error    'buyerName' is assigned to itself                                                                           no-self-assign
+  141:27  error    Empty block statement                                                                                       no-empty
+  143:7   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  153:5   error    Identifier 'total_price' is not in camel case                                                               camelcase
+  156:5   warning  Expected property shorthand                                                                                 object-shorthand
+  158:5   warning  Expected property shorthand                                                                                 object-shorthand
+  159:12  error    Identifier 'total_price' is not in camel case                                                               camelcase
+  165:8   error    Unexpected constant condition                                                                               no-constant-condition
+  165:8   error    'status' is assigned a value but never used                                                                 no-unused-vars
+  175:9   warning  Blocks are nested too deeply (4). Maximum allowed is 3                                                      max-depth
+  193:3   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+  199:7   error    Use the isNaN function to compare with NaN                                                                  use-isnan
+  206:7   error    Redundant double negation                                                                                   no-extra-boolean-cast
+  225:10  error    'oldCalc' is defined but never used                                                                         no-unused-vars
+  229:10  error    'brokenReport' is defined but never used                                                                    no-unused-vars
+  230:10  error    'totl' is not defined                                                                                       no-undef
+  231:3   error    Unreachable code                                                                                            no-unreachable
+  235:3   warning  Expected method shorthand                                                                                   object-shorthand
+  256:12  error    Unexpected function expression                                                                              prefer-arrow-callback
+  264:1   warning  Assignment (=) can be replaced with operator assignment (||=)                                               logical-assignment-operators
+  273:9   error    Identifier 'ticket_count' is not in camel case                                                              camelcase
+  294:1   error    The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype  guard-for-in
+
+✖ 33 problems (22 errors, 11 warnings)
+  4 errors and 10 warnings potentially fixable with the `--fix` option.
