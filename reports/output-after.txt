@@ -1,0 +1,30 @@
+=== Concert agency report ===
+I'm here Live music
+3
+Point sum: 3, box owner: Ira
+Tiny: 3, limit: 6
+Mode: prod, double 4 = 8, inc 4 = 5
+Active events: 6
+Titles: Rock Night, Jazz Evening, Pop Festival, Classic Hall, Indie Open Air, Electro Wave, Folk Fest, Metal Storm
+Big events: Pop Festival, Indie Open Air, Folk Fest
+Order #101: Olena bought 3 ticket(s) for "Rock Night", total 2040.00 UAH
+Order #102: Taras bought 2 ticket(s) for "Classic Hall", total 1620.00 UAH
+Order #103: Ira bought 1 ticket(s) for "Folk Fest", total 315.00 UAH
+Revenue: 3975.00 UAH
+Valid orders: 3
+Free seats, event 1: 117
+Close 'new' order: open
+Price check: ok, label: closed
+Can sell: true
+Events per city:
+  Kyiv: 3
+  Lviv: 2
+  Odesa: 1
+  Kharkiv: 1
+  Dnipro: 1
+city key: Kyiv
+city key: Lviv
+city key: Odesa
+city key: Kharkiv
+city key: Dnipro
+Orders total: 3
